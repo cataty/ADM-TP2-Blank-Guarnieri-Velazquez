@@ -36,12 +36,30 @@
 </script>
 
 <template>
-    <ul>
-        <li v-for="movie in movies" v-bind:key="movie.id">
-            <img class="list-img" v-bind:src="movie.backdrop_path" v-bind:alt="movie.title">
-            <h3>{{movie.title}}</h3>
-            <p>{{movie.overview}}</p>
-            <RouterLink :to="{path: '/movie/'+ movie.id}">Ver detalles</RouterLink>
-        </li>
-    </ul>
+        <v-row>
+            <v-col cols="12" md="4" v-for="movie in movies" v-bind:key="movie.id">
+                <v-card hover>
+                    <v-card-item>
+                        <img class="list-img" v-bind:src="movie.backdrop_path" v-bind:alt="movie.title">
+                    <v-card-title>
+                        <h3>{{movie.title}}</h3>
+                    </v-card-title>
+                
+                    <v-card-subtitle>
+                        Card subtitle secondary text
+                    </v-card-subtitle>
+                    </v-card-item>
+                
+                    <v-card-text>
+                        <p>{{movie.overview}}</p>
+                    </v-card-text>
+                    <RouterLink :to="{path: '/movie/'+ movie.id}"> <v-btn text="Ver Más"></v-btn></RouterLink>
+
+                </v-card>
+            </v-col>
+        </v-row>
 </template>
+
+<style>
+
+</style>
