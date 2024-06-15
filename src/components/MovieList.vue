@@ -22,7 +22,7 @@
                     }
                 };
 
-                fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-Es&page=1&sort_by=popularity.desc&append_to_response=images', options)
+                fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-Es&page=1&sort_by=popularity.desc', options)
                 .then(response => response.json())
                 .then(response => response.results.forEach(movie => {
                     console.log(movie);
@@ -37,23 +37,25 @@
 
 <template>
         <v-row>
-            <v-col cols="12" md="4" v-for="movie in movies" v-bind:key="movie.id">
-                <v-card hover>
-                    <v-card-item>
-                        <img class="list-img" v-bind:src="movie.backdrop_path" v-bind:alt="movie.title">
+            <v-col cols="12" sm="6" md="4"  v-for="movie in movies" v-bind:key="movie.id">
+                <v-card hover class="list-card">
+                    <v-card-item >
+                        <img class="list-img" v-bind:src="('https://image.tmdb.org/t/p/w500'+movie.backdrop_path)" v-bind:alt="movie.title">
                     <v-card-title>
-                        <h3>{{movie.title}}</h3>
+                        {{movie.title}}
                     </v-card-title>
                 
                     <v-card-subtitle>
-                        Card subtitle secondary text
+                        {{movie.release_date}}
                     </v-card-subtitle>
                     </v-card-item>
                 
                     <v-card-text>
-                        <p>{{movie.overview}}</p>
+                        {{movie.overview}}
                     </v-card-text>
-                    <RouterLink :to="{path: '/movie/'+ movie.id}"> <v-btn text="Ver Más"></v-btn></RouterLink>
+                    <v-card-item>
+                        <RouterLink :to="{path: '/movie/'+ movie.id}"> <v-btn text="Ver Más"></v-btn></RouterLink>
+                    </v-card-item>
 
                 </v-card>
             </v-col>
