@@ -1,4 +1,5 @@
 <template>
+  <h1>Movie Details</h1>
   <MovieDetail />
 </template>
 

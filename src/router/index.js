@@ -21,7 +21,7 @@ const router = createRouter({
       component: index
     },
     {
-      path: '/movie',
+      path: '/movie/:id',
       name: 'movie',
       component: movie
     },
