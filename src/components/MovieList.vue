@@ -12,7 +12,7 @@
             <router-link :to="{ path: '/movie/' + movie.id }">
               <v-btn text>Ver Más</v-btn>
             </router-link>
-            <v-btn text @click="toggleFavorito(movie)">
+            <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
               {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
             </v-btn>
           </v-card-actions>
@@ -41,7 +41,10 @@
       const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-Es&page=1&sort_by=popularity.desc', options);
       const data = await response.json();
   
-      movies.value = data.results;
+      movies.value = data.results.map(movie => ({
+        ...movie,
+        favorito: false // Añadimos un campo para controlar si es favorito
+      }));
     } catch (error) {
       console.error('Error al obtener las películas:', error);
     }
@@ -49,10 +52,14 @@
   
   // Método para agregar o quitar películas de favoritos
   const toggleFavorito = (movie) => {
-    if (esFavorito(movie)) {
-      quitarFavorito(movie);
-    } else {
-      agregarFavorito(movie);
+    const index = movies.value.findIndex(m => m.id === movie.id);
+    if (index !== -1) {
+      movies.value[index].favorito = !movies.value[index].favorito;
+      if (movies.value[index].favorito) {
+        agregarFavorito(movie);
+      } else {
+        quitarFavorito(movie);
+      }
     }
   };
   
@@ -109,4 +116,4 @@
     height: auto;
   }
   </style>
-   
+  
