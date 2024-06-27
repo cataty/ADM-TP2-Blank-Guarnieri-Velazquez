@@ -51,6 +51,11 @@ import {ref, onMounted, defineExpose} from 'vue';
     }
   };
 
+  // Hacer el método disponible desde el componente padre  
+  defineExpose({
+    getMovies
+  });
+
   // Método para agregar o quitar películas de favoritos
   const toggleFavorito = (movie) => {
     const index = movies.value.findIndex(m => m.id === movie.id);
@@ -102,10 +107,6 @@ import {ref, onMounted, defineExpose} from 'vue';
   onMounted(() => {
     getMovies();
     cargarFavoritosDesdeLocalStorage();
-  });
-
-  defineExpose({
-    getMovies
   });
 
   </script>
