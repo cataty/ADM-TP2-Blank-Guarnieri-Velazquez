@@ -3,7 +3,8 @@
       <v-col cols="12" sm="6" md="4" v-for="movie in movies" :key="movie.id">
         <v-card hover class="list-card">
           <v-card-item>
-            <img class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
+            <img v-if="movie.backdrop_path" class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
+            <img v-else class="list.img" src="../assets/movie-list-placeholder.jpg"  :alt="movie.title + ' - no se encontró la imágen'">
             <v-card-title>{{ movie.title }}</v-card-title>
             <v-card-subtitle>{{ movie.release_date }}</v-card-subtitle>
           </v-card-item>
@@ -29,7 +30,7 @@ import {ref, onMounted, defineExpose} from 'vue';
   
   // Método para obtener películas desde la API
   const getMovies = async (genres) => {
-    const withGenres = (genres && genres.length >= 1) ? ('&with_genres='+genres.join(",")) : "";
+    const withGenres = (genres && genres.length >= 1) ? ('&with_genres='+genres.join(",")) : ""; // si hay generos seleccionados, crear la parte correspondiente del query
     try {
       const options = {
         method: 'GET',
@@ -108,7 +109,6 @@ import {ref, onMounted, defineExpose} from 'vue';
     getMovies();
     cargarFavoritosDesdeLocalStorage();
   });
-
   </script>
 
   <style scoped>
