@@ -1,22 +1,34 @@
 <template>
+<div class="filterbar">
     <v-chip-group selected-class="text-primary" multiple>
         <v-chip 
         v-for="genre in genres"
+        :key="genre.id"
         variant="elevated"
         filter
-        @click="selectGenre"
+        @click="selectGenre(genre.id)"
         >
             {{genre.name}}
         </v-chip>
-      </v-chip-group>
+    </v-chip-group>
+</div>
 </template>
+
+<style>
+    .filterbar{
+        margin-top:2rem;
+        margin-bottom:2rem;
+    }
+</style>
+
 
 <script>
 export default {
     name: 'GenreFilters',
     data (){
         return {
-            genres: []
+            genres: [],
+            selectedGenres: []
         }
     },
     created(){
@@ -36,13 +48,17 @@ export default {
             fetch('https://api.themoviedb.org/3/genre/movie/list?language=es', options)
             .then(response => response.json())
             .then(response => response.genres.forEach(genre => {
-                    console.log(genre);
                     this.genres.push(genre);
             }))
             .catch(err => console.error(err));
         },
-        selectGenre(){
-
+        selectGenre(genreId){
+            if (this.selectedGenres.find((genre) => genre === genreId)){
+                this.selectedGenres.splice(this.selectedGenres.find((genre) => genre === genreId).index, 1);
+            } else {
+                this.selectedGenres.push(genreId);
+            }
+            this.$emit('genreSelect', this.selectedGenres)
         }
     }
 }

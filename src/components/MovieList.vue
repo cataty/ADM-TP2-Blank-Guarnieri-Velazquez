@@ -21,14 +21,15 @@
     </v-row>
   </template>
   
-  <script setup>
-  import { ref } from 'vue';
+<script setup>
+import {ref, onMounted, defineExpose} from 'vue';
   
   const movies = ref([]);
   const favoritos = ref([]);
   
   // Método para obtener películas desde la API
-  const getMovies = async () => {
+  const getMovies = async (genres) => {
+    const withGenres = (genres && genres.length >= 1) ? ('&with_genres='+genres.join(",")) : "";
     try {
       const options = {
         method: 'GET',
@@ -38,7 +39,7 @@
         }
       };
   
-      const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-Es&page=1&sort_by=popularity.desc', options);
+      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-Es${withGenres}&page=1&sort_by=popularity.desc`, options);
       const data = await response.json();
   
       movies.value = data.results.map(movie => ({
@@ -49,7 +50,7 @@
       console.error('Error al obtener las películas:', error);
     }
   };
-  
+
   // Método para agregar o quitar películas de favoritos
   const toggleFavorito = (movie) => {
     const index = movies.value.findIndex(m => m.id === movie.id);
@@ -97,15 +98,18 @@
       favoritos.value = JSON.parse(favoritosLocalStorage);
     }
   };
-  
   // Cargar películas al iniciar el componente
-  import { onMounted } from 'vue';
   onMounted(() => {
     getMovies();
     cargarFavoritosDesdeLocalStorage();
   });
+
+  defineExpose({
+    getMovies
+  });
+
   </script>
-  
+
   <style scoped>
   .list-card {
     margin-bottom: 20px;
