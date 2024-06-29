@@ -1,22 +1,22 @@
-
 <script setup>
-  import MovieList from '../components/MovieList.vue'
-  import GenreFilters from '../components/GenreFilters.vue'
+import { ref } from 'vue';
+import MovieList from '../components/MovieList.vue';
+import GenreFilters from '../components/GenreFilters.vue';
+import SearchBar from '../components/SearchBar.vue';
+
+const movieListRef = ref(null);
+
+const refreshMovieList = (selectedGenres) => {
+  movieListRef.value.getMoviesByGenre(selectedGenres);
+};
+
+const handleSearchResults = (searchResults) => {
+  movieListRef.value.setMovies(searchResults);
+};
 </script>
 
 <template>
+  <SearchBar @search="handleSearchResults" />
   <GenreFilters @genreSelect="refreshMovieList" />
-  <MovieList 
-  ref="movieList"/>
+  <MovieList ref="movieListRef" />
 </template>
-
-<script>
-  export default {
-    name:"Home",
-    methods:{
-        refreshMovieList(selectedGenres){
-            this.$refs.movieList.getMovies(selectedGenres);
-        }
-    }
-  }
-</script>
