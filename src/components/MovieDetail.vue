@@ -7,7 +7,11 @@
             <div class="movie-data">
                 <p><strong>Fecha de estreno:</strong> <span>{{ releaseDate }}</span></p>
                 <p><strong>Idioma original:</strong> <span>{{ originalLanguage }}</span></p>
-                <p><strong>Géneros:</strong> <span v-for="genre in genres" :key="genre.id">{{ genre.name }} </span></p>
+                <p><strong>Géneros:</strong> 
+                    <v-chip-group class="d-inline">
+                        <v-chip v-for="genre in genres" :key="genre.id">{{ genre.name}}</v-chip>
+                    </v-chip-group>
+                </p>
                 <p><strong>Calificación:</strong> <span>{{ rating }} ({{ voteCount }} votos)</span></p>
             </div>
         </div>
@@ -72,19 +76,20 @@ export default {
 
 <style scoped>
 .movie-detail {
+    margin-top:2rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 20px;
+    padding: 1.5rem;
     background:#f8f8fc;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .movie-poster {
     max-width: 100%;
-    border-radius: 8px;
-    margin-right: 20px;
+    border-radius: 4px;
+    margin-right: 1.5rem;
 }
 
 .movie-info {
@@ -116,6 +121,7 @@ export default {
     margin-top:2rem;
     padding: 1rem;
     background:#fff;
+    border-radius: 4px;
 }
 
 .movie-data p span{
