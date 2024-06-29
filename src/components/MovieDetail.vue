@@ -4,10 +4,12 @@
         <div class="movie-info">
             <h3 class="movie-title">{{ title }}</h3>
             <p class="movie-overview">{{ overview }}</p>
-            <p><strong>Fecha de estreno:</strong> {{ releaseDate }}</p>
-            <p><strong>Idioma original:</strong> {{ originalLanguage }}</p>
-            <p><strong>Géneros:</strong> <span v-for="genre in genres" :key="genre.id">{{ genre.name }} </span></p>
-            <p><strong>Calificación:</strong> {{ rating }} ({{ voteCount }} votos)</p>
+            <div class="movie-data">
+                <p><strong>Fecha de estreno:</strong> <span>{{ releaseDate }}</span></p>
+                <p><strong>Idioma original:</strong> <span>{{ originalLanguage }}</span></p>
+                <p><strong>Géneros:</strong> <span v-for="genre in genres" :key="genre.id">{{ genre.name }} </span></p>
+                <p><strong>Calificación:</strong> <span>{{ rating }} ({{ voteCount }} votos)</span></p>
+            </div>
         </div>
     </div>
 </template>
@@ -74,7 +76,7 @@ export default {
     flex-direction: row;
     align-items: flex-start;
     padding: 20px;
-    background-color: #f5f5f5;
+    background:#f8f8fc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -90,9 +92,10 @@ export default {
 }
 
 .movie-title {
-    font-size: 24px;
+    font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
+    color: #0D47A1;
 }
 
 .movie-overview {
@@ -108,4 +111,15 @@ export default {
 .movie-info strong {
     font-weight: bold;
 }
+
+.movie-data{
+    margin-top:2rem;
+    padding: 1rem;
+    background:#fff;
+}
+
+.movie-data p span{
+color: #0D47A1;
+}
+
 </style>
