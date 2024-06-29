@@ -1,8 +1,14 @@
 <template>
-    <div>
-        <img :src="posterUrl" :alt="title">
-        <h3>{{ title }}</h3>
-        <p>{{ overview }}</p>
+    <div class="movie-detail">
+        <img :src="posterUrl" :alt="title" class="movie-poster">
+        <div class="movie-info">
+            <h3 class="movie-title">{{ title }}</h3>
+            <p class="movie-overview">{{ overview }}</p>
+            <p><strong>Fecha de estreno:</strong> {{ releaseDate }}</p>
+            <p><strong>Idioma original:</strong> {{ originalLanguage }}</p>
+            <p><strong>Géneros:</strong> <span v-for="genre in genres" :key="genre.id">{{ genre.name }} </span></p>
+            <p><strong>Calificación:</strong> {{ rating }} ({{ voteCount }} votos)</p>
+        </div>
     </div>
 </template>
 
@@ -63,7 +69,43 @@ export default {
 </script>
 
 <style scoped>
-img {
+.movie-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster {
     max-width: 100%;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.movie-info {
+    text-align: left;
+}
+
+.movie-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.movie-overview {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.movie-info p {
+    margin: 5px 0;
+}
+
+.movie-info strong {
+    font-weight: bold;
 }
 </style>
