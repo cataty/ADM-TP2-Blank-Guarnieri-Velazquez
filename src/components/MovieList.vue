@@ -23,7 +23,7 @@
   </template>
   
 <script setup>
-import {ref, onMounted, defineExpose} from 'vue';
+import {ref, onMounted} from 'vue';
   
   const movies = ref([]);
   const favoritos = ref([]);

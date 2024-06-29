@@ -1,10 +1,11 @@
 <template>
 <div class="filterbar">
     <v-chip-group selected-class="text-primary" multiple>
-        <v-chip 
+        <v-chip class="filter"
         v-for="genre in genres"
         :key="genre.id"
         variant="elevated"
+
         filter
         @click="selectGenre(genre.id)"
         >
@@ -14,10 +15,16 @@
 </div>
 </template>
 
-<style>
+<style scoped>
     .filterbar{
-        margin-top:2rem;
-        margin-bottom:2rem;
+        margin:2.5rem 0;
+        display:flex;
+        justify-content:center;
+    }
+
+    .filter{
+        background:#f8f8fc !important;
+        color:#1976D2 !important;
     }
 </style>
 
@@ -63,3 +70,6 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+</style>
