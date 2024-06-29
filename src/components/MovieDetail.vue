@@ -71,8 +71,8 @@ export default {
 <style scoped>
 .movie-detail {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -82,11 +82,11 @@ export default {
 .movie-poster {
     max-width: 100%;
     border-radius: 8px;
+    margin-right: 20px;
 }
 
 .movie-info {
-    text-align: center;
-    margin-top: 20px;
+    text-align: left;
 }
 
 .movie-title {
