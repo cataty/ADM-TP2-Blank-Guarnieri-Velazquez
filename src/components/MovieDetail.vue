@@ -13,16 +13,22 @@
             </v-chip-group>
           </p>
           <p><strong>Calificación:</strong> <span>{{ rating }} ({{ voteCount }} votos)</span></p>
+          <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
+            {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
+          </v-btn>
         </div>
       </div>
     </div>
   </template>
   
   <script>
+  import { ref, onMounted } from 'vue';
+  
   export default {
     name: "MovieDetail",
     data() {
       return {
+        movie: null,
         title: "",
         overview: "",
         poster: "",
@@ -31,6 +37,7 @@
         genres: [],
         rating: "",
         voteCount: "",
+        favoritos: []
       };
     },
     computed: {
@@ -55,6 +62,7 @@
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=es-ES&append_to_response=videos,images`, options)
           .then(response => response.json())
           .then(movie => {
+            this.movie = movie;
             this.title = movie.title;
             this.overview = movie.overview;
             this.poster = movie.poster_path;
@@ -63,10 +71,32 @@
             this.genres = movie.genres;
             this.rating = movie.vote_average;
             this.voteCount = movie.vote_count;
+            this.cargarFavoritosDesdeLocalStorage();
           })
           .catch(error => {
             console.error('Error fetching movie details:', error);
           });
+      },
+      toggleFavorito(movie) {
+        const index = this.favoritos.findIndex(m => m.id === movie.id);
+        if (index !== -1) {
+          this.favoritos.splice(index, 1);
+        } else {
+          this.favoritos.push(movie);
+        }
+        this.guardarFavoritosEnLocalStorage();
+      },
+      esFavorito(movie) {
+        return this.favoritos.some(fav => fav.id === movie.id);
+      },
+      guardarFavoritosEnLocalStorage() {
+        localStorage.setItem('favoritos', JSON.stringify(this.favoritos));
+      },
+      cargarFavoritosDesdeLocalStorage() {
+        const favoritosLocalStorage = localStorage.getItem('favoritos');
+        if (favoritosLocalStorage) {
+          this.favoritos = JSON.parse(favoritosLocalStorage);
+        }
       }
     }
   };
