@@ -19,7 +19,7 @@
   //
 </script>
 
-<style>
+<style scoped>
 .navbar{
   padding:0 2rem;
 }
@@ -28,4 +28,11 @@
   height:40px;
   width: auto;
 }
+
+@media(max-width:420px){
+  .title{
+opacity:0;
+  }
+}
+
 </style>
