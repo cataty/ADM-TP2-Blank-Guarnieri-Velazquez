@@ -5,8 +5,8 @@
         <v-card-item>
           <img v-if="movie.backdrop_path" class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
           <img v-else class="list-img" src="../assets/movie-list-placeholder.jpg" :alt="movie.title + ' - no se encontró la imágen'">
-          <v-card-title>{{ movie.title }}</v-card-title>
-          <v-card-subtitle>{{ movie.release_date }}</v-card-subtitle>
+          <v-card-title class="list-card-title text-blue-darken-4">{{ movie.title }}</v-card-title>
+          <v-card-subtitle class="text-blue-darken-2">{{ movie.release_date }}</v-card-subtitle>
         </v-card-item>
         <v-card-text>{{ movie.overview }}</v-card-text>
         <v-card-actions>
@@ -120,5 +120,9 @@ defineExpose({
 .list-img {
   width: 100%;
   height: auto;
+}
+
+.list-card-title{
+  margin-top:1rem;
 }
 </style>
