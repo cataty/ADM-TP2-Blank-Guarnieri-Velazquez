@@ -1,9 +1,10 @@
 <template>
+    <h1 class="text-h3 text-center text-blue-darken-4">Detalle de Pelicula</h1>
     <div class="movie-detail">
       <img :src="posterUrl" :alt="title" class="movie-poster">
       <div class="movie-info">
-        <h3 class="movie-title">{{ title }}</h3>
-        <p class="movie-overview">{{ overview }}</p>
+        <h2 class="text-h3 movie-title text-blue-darken-3">{{ title }}</h2>
+        <p class="text-blue-grey-darken-4">{{ overview }}</p>
         <div class="movie-data">
           <p><strong>Fecha de estreno:</strong> <span>{{ releaseDate }}</span></p>
           <p><strong>Idioma original:</strong> <span>{{ originalLanguage }}</span></p>
@@ -13,10 +14,10 @@
             </v-chip-group>
           </p>
           <p><strong>Calificación:</strong> <span>{{ rating }} ({{ voteCount }} votos)</span></p>
-          <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
+        </div>
+        <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
             {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
           </v-btn>
-        </div>
       </div>
     </div>
   </template>
@@ -103,6 +104,10 @@
   </script>
   
   <style scoped>
+  h1{
+    margin:3rem 0;
+  }
+
   .movie-detail {
     display: flex;
     flex-direction: column;
@@ -127,17 +132,10 @@
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
-    color: #0D47A1;
   }
-  
-  .movie-overview {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
+
   .movie-info p {
-    margin: 5px 0;
+    margin: 0.5rem 0;
   }
   
   .movie-info strong {
@@ -145,7 +143,7 @@
   }
   
   .movie-data {
-    margin-top: 2rem;
+    margin:2rem 0;
     padding: 1rem;
     background: #fff;
     border-radius: 4px;
@@ -160,6 +158,8 @@
     .movie-detail {
       flex-direction: row;
       align-items: flex-start;
+      max-width:1024px;
+      margin:auto;
     }
   
     .movie-info {

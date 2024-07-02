@@ -8,7 +8,7 @@
           <v-card-title class="list-card-title text-blue-darken-4">{{ movie.title }}</v-card-title>
           <v-card-subtitle class="text-blue-darken-2">{{ movie.release_date }}</v-card-subtitle>
         </v-card-item>
-        <v-card-text class="list-text">{{ movie.overview }}</v-card-text>
+        <v-card-text class="text-blue-grey-darken-4">{{ movie.overview }}</v-card-text>
         <v-card-actions class="list-actions">
           <router-link :to="{ path: '/movie/' + movie.id }">
             <v-btn text>Ver Más</v-btn>
@@ -81,12 +81,6 @@ h1{
 
   .list-card-title{
     margin-top:1rem;
-  }
-
-  .list-text {
-    font-size: 0.95em;
-    color: #333;
-    margin: 10px 0;
   }
   
   .list-actions {
