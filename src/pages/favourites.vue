@@ -2,13 +2,13 @@
   <v-row>
     <v-col cols="12" sm="6" md="4" v-for="movie in favoritos" :key="movie.id">
       <v-card hover class="list-card">
-        <v-card-item>
+        <v-card-item class="list-card-item">
           <img class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
-          <v-card-title>{{ movie.title }}</v-card-title>
-          <v-card-subtitle>{{ movie.release_date }}</v-card-subtitle>
+          <v-card-title class="list-title">{{ movie.title }}</v-card-title>
+          <v-card-subtitle class="list-subtitle">{{ movie.release_date }}</v-card-subtitle>
         </v-card-item>
-        <v-card-text>{{ movie.overview }}</v-card-text>
-        <v-card-actions>
+        <v-card-text class="list-text">{{ movie.overview }}</v-card-text>
+        <v-card-actions class="list-actions">
           <router-link :to="{ path: '/movie/' + movie.id }">
             <v-btn text>Ver Más</v-btn>
           </router-link>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const favoritos = ref([]);
 
@@ -47,8 +47,6 @@ const guardarFavoritosEnLocalStorage = () => {
   localStorage.setItem('favoritos', JSON.stringify(favoritos.value));
 };
 
-// Cargar favoritos desde localStorage al iniciar el componente
-import { onMounted } from 'vue';
 onMounted(() => {
   cargarFavoritosDesdeLocalStorage();
 });
@@ -57,11 +55,49 @@ onMounted(() => {
 <style scoped>
 .list-card {
   margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+.list-card:hover {
+  transform: scale(1.05);
+}
+
+.list-card-item {
+  padding: 16px;
+  text-align: center;
 }
 
 .list-img {
   width: 100%;
   height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.list-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.list-subtitle {
+  font-size: 0.9em;
+  color: #757575;
+  margin-bottom: 10px;
+}
+
+.list-text {
+  font-size: 0.95em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.list-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.v-btn {
+  margin: 0 5px;
 }
 </style>
-
