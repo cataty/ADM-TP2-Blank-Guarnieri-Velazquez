@@ -23,9 +23,9 @@ const handleSearchResults = (searchResults) => {
 >
   <div class="d-flex flex-column fill-height justify-center align-center text-white">
     <h1 class="text-h3 font-weight-bold mb-4 hero-title">
-      MyMovieFavs
+      <img src="/src/assets/mymovieApp-logo.png" alt="logo" class="logo"> MyMovieFavs
     </h1>
-    <h4 class="subheading font-weight-thin">
+    <h4 class="subheading font-weight-regular">
       Una colección de tus pelis favoritas
     </h4>
     <SearchBar @search="handleSearchResults" class="searchbar"/>
@@ -38,7 +38,13 @@ const handleSearchResults = (searchResults) => {
   <MovieList ref="movieListRef" />
 </template>
 
-<style>
+<style scoped>
+.logo {
+position:relative;
+display: inline-block;
+top:4px;
+}
+
 h2{
   margin-top:5rem;
 }
