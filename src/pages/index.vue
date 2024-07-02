@@ -43,6 +43,7 @@ const handleSearchResults = (searchResults) => {
 position:relative;
 display: inline-block;
 top:4px;
+max-height:40px;
 }
 
 h2{
