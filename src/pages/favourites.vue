@@ -1,11 +1,12 @@
 <template>
+  <h1 class="text-h3 text-center text-blue-darken-4">Lista de Favoritos</h1>
   <v-row>
     <v-col cols="12" sm="6" md="4" v-for="movie in favoritos" :key="movie.id">
       <v-card hover class="list-card">
         <v-card-item>
           <img class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
-          <v-card-title>{{ movie.title }}</v-card-title>
-          <v-card-subtitle>{{ movie.release_date }}</v-card-subtitle>
+          <v-card-title class="list-card-title text-blue-darken-4">{{ movie.title }}</v-card-title>
+          <v-card-subtitle class="text-blue-darken-2">{{ movie.release_date }}</v-card-subtitle>
         </v-card-item>
         <v-card-text>{{ movie.overview }}</v-card-text>
         <v-card-actions>
@@ -55,6 +56,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+h1{
+  margin-top:5rem;
+}
+
 .list-card {
   margin-bottom: 20px;
 }
@@ -63,5 +68,10 @@ onMounted(() => {
   width: 100%;
   height: auto;
 }
+
+.list-card-title{
+  margin-top:1rem;
+}
+
 </style>
 
