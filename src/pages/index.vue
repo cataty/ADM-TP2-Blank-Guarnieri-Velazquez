@@ -32,7 +32,7 @@ const handleSearchResults = (searchResults) => {
   </div>
 </v-parallax>
 
-  <h2 class="text-h3 text-center text-blue-darken-4">Lista de Peliculas</h2>
+  <h2 class="text-h3 text-center text-blue-darken-4">Lista de Películas</h2>
 
   <GenreFilters @genreSelect="refreshMovieList" />
   <MovieList ref="movieListRef" />

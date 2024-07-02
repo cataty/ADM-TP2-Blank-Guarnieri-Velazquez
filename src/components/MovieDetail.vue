@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-h3 text-center text-blue-darken-4">Detalle de Pelicula</h1>
+    <h1 class="text-h3 text-center text-blue-darken-4">Detalle de Película</h1>
     <div class="movie-detail">
       <img :src="posterUrl" :alt="title" class="movie-poster">
       <div class="movie-info">
