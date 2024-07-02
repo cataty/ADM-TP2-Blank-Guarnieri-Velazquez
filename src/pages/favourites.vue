@@ -54,15 +54,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-h1{
-  margin-top:5rem;
-  margin-bottom:3rem;
+h1 {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 .list-card {
   margin-bottom: 20px;
   transition: transform 0.3s;
 }
+
 .list-card:hover {
   transform: scale(1.05);
 }
@@ -71,25 +72,25 @@ h1{
   padding: 1rem;
 }
 
-  .list-img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
+.list-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
-  .list-card-title{
-    margin-top:1rem;
-  }
-  
-  .list-actions {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-  }
-  
-  .v-btn {
-    margin: 0 5px;
-  }
+
+.list-card-title {
+  margin-top: 1rem;
+}
+
+.list-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.v-btn {
+  margin: 0 5px;
+}
 </style>

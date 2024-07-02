@@ -1,47 +1,41 @@
 <template>
-<div class="filterbar">
-    <v-chip-group selected-class="text-primary" multiple>
-        <v-chip class="filter text-blue-darken-2"
-        v-for="genre in genres"
-        :key="genre.id"
-        variant="elevated"
-
-        filter
-        @click="selectGenre(genre.id)"
-        >
-            {{genre.name}}
-        </v-chip>
-    </v-chip-group>
-</div>
+    <div class="filterbar">
+        <v-chip-group selected-class="text-primary" multiple>
+            <v-chip class="filter text-blue-darken-2" v-for="genre in genres" :key="genre.id" variant="elevated" filter
+                @click="selectGenre(genre.id)">
+                {{ genre.name }}
+            </v-chip>
+        </v-chip-group>
+    </div>
 </template>
 
 <style scoped>
-    .filterbar{
-        margin:2.5rem 0;
-        display:flex;
-        justify-content:center;
-    }
+.filterbar {
+    margin: 2.5rem 0;
+    display: flex;
+    justify-content: center;
+}
 
-    .filter{
-        background:#f8f8fc !important;
-    }
+.filter {
+    background: #f8f8fc !important;
+}
 </style>
 
 
 <script>
 export default {
     name: 'GenreFilters',
-    data (){
+    data() {
         return {
             genres: [],
             selectedGenres: []
         }
     },
-    created(){
+    created() {
         this.getGenres();
     },
     methods: {
-        async getGenres(){
+        async getGenres() {
             this.genres = [];
             const options = {
                 method: 'GET',
@@ -52,14 +46,14 @@ export default {
             };
 
             fetch('https://api.themoviedb.org/3/genre/movie/list?language=es', options)
-            .then(response => response.json())
-            .then(response => response.genres.forEach(genre => {
+                .then(response => response.json())
+                .then(response => response.genres.forEach(genre => {
                     this.genres.push(genre);
-            }))
-            .catch(err => console.error(err));
+                }))
+                .catch(err => console.error(err));
         },
-        selectGenre(genreId){
-            if (this.selectedGenres.find((genre) => genre === genreId)){
+        selectGenre(genreId) {
+            if (this.selectedGenres.find((genre) => genre === genreId)) {
                 this.selectedGenres.splice(this.selectedGenres.find((genre) => genre === genreId).index, 1);
             } else {
                 this.selectedGenres.push(genreId);
@@ -70,5 +64,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

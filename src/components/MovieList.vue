@@ -3,8 +3,10 @@
     <v-col cols="12" sm="6" md="4" v-for="movie in movies" :key="movie.id">
       <v-card hover class="list-card">
         <v-card-item>
-          <img v-if="movie.backdrop_path" class="list-img" :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
-          <img v-else class="list-img" src="../assets/movie-list-placeholder.jpg" :alt="movie.title + ' - no se encontró la imágen'">
+          <img v-if="movie.backdrop_path" class="list-img"
+            :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" :alt="movie.title">
+          <img v-else class="list-img" src="../assets/movie-list-placeholder.jpg"
+            :alt="movie.title + ' - no se encontró la imágen'">
           <v-card-title class="list-card-title text-blue-darken-4">{{ movie.title }}</v-card-title>
           <v-card-subtitle class="text-blue-darken-2">{{ movie.release_date }}</v-card-subtitle>
         </v-card-item>
@@ -122,7 +124,7 @@ defineExpose({
   height: auto;
 }
 
-.list-card-title{
-  margin-top:1rem;
+.list-card-title {
+  margin-top: 1rem;
 }
 </style>

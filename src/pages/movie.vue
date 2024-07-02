@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-  import MovieDetail from '@/components/MovieDetail.vue'
+import MovieDetail from '@/components/MovieDetail.vue'
 </script>
 
 <script>
