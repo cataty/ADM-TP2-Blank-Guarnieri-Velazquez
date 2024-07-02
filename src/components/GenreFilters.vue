@@ -1,7 +1,7 @@
 <template>
 <div class="filterbar">
     <v-chip-group selected-class="text-primary" multiple>
-        <v-chip class="filter"
+        <v-chip class="filter text-blue-darken-2"
         v-for="genre in genres"
         :key="genre.id"
         variant="elevated"
@@ -24,7 +24,6 @@
 
     .filter{
         background:#f8f8fc !important;
-        color:#1976D2 !important;
     }
 </style>
 

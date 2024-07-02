@@ -16,7 +16,42 @@ const handleSearchResults = (searchResults) => {
 </script>
 
 <template>
-  <SearchBar @search="handleSearchResults" />
+
+  <v-parallax
+  height="450"
+  src="/src/assets/movie-placeholder.jpg"
+>
+  <div class="d-flex flex-column fill-height justify-center align-center text-white">
+    <h1 class="text-h3 font-weight-bold mb-4 hero-title">
+      MyMovieFavs
+    </h1>
+    <h4 class="subheading font-weight-thin">
+      Una colección de tus pelis favoritas
+    </h4>
+    <SearchBar @search="handleSearchResults" class="searchbar"/>
+  </div>
+</v-parallax>
+
+  <h2 class="text-h3 text-center text-blue-darken-4">Lista de Peliculas</h2>
+
   <GenreFilters @genreSelect="refreshMovieList" />
   <MovieList ref="movieListRef" />
 </template>
+
+<style>
+h2{
+  margin-top:5rem;
+}
+
+.hero-title{
+  margin:6rem auto;
+}
+.searchbar{
+  width: 75%;
+  margin-top:4rem;
+}
+
+.searchbar .v-input__control{
+  height: 4rem;
+}
+</style>
