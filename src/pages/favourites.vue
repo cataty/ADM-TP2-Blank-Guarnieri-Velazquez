@@ -56,6 +56,7 @@ onMounted(() => {
 <style scoped>
 h1{
   margin-top:5rem;
+  margin-bottom:3rem;
 }
 
 .list-card {
@@ -67,8 +68,7 @@ h1{
 }
 
 .list-card-item {
-  padding: 16px;
-  text-align: center;
+  padding: 1rem;
 }
 
   .list-img {
@@ -82,7 +82,7 @@ h1{
   .list-card-title{
     margin-top:1rem;
   }
-  
+
   .list-text {
     font-size: 0.95em;
     color: #333;
