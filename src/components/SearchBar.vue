@@ -39,4 +39,15 @@
   
   watch(searchTerm, onSearch);
   </script>
+
+<style>
+.searchbar{
+  width: 75%;
+  margin-top:4rem;
+}
+
+.searchbar .v-input__control{
+  height: 4rem;
+}
+</style>
   

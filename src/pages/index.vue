@@ -22,7 +22,7 @@ const handleSearchResults = (searchResults) => {
   src="/src/assets/movie-placeholder.jpg"
 >
   <div class="d-flex flex-column fill-height justify-center align-center text-white">
-    <h1 class="text-h3 font-weight-bold mb-4 hero-title">
+    <h1 class="text-h4 text-md-h3 font-weight-bold mb-4 hero-title">
       <img src="/src/assets/mymovieApp-logo.png" alt="logo" class="logo"> MyMovieFavs
     </h1>
     <h4 class="subheading font-weight-regular">
@@ -52,12 +52,5 @@ h2{
 .hero-title{
   margin:6rem auto;
 }
-.searchbar{
-  width: 75%;
-  margin-top:4rem;
-}
 
-.searchbar .v-input__control{
-  height: 4rem;
-}
 </style>
