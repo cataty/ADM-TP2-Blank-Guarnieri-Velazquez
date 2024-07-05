@@ -16,7 +16,7 @@
             <v-btn text>Ver Más</v-btn>
           </router-link>
           <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
-            {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
+            {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar Favorito' }}
           </v-btn>
         </v-card-actions>
       </v-card>

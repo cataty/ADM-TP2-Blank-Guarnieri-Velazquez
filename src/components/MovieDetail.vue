@@ -16,7 +16,7 @@
                 <p><strong>Calificación:</strong> <span>{{ rating }} ({{ voteCount }} votos)</span></p>
             </div>
             <v-btn text @click="toggleFavorito(movie)" :color="esFavorito(movie) ? 'error' : 'success'">
-                {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
+                {{ esFavorito(movie) ? 'Quitar de Favoritos' : 'Agregar Favorito' }}
             </v-btn>
         </div>
     </div>
